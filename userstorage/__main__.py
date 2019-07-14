@@ -1,3 +1,9 @@
+# Copyright (C) 2019 Nir Soffer
+# This program is free software; see LICENSE for more info.
+
+from __future__ import absolute_import
+from __future__ import division
+
 import argparse
 import logging
 
