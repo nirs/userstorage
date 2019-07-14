@@ -83,22 +83,22 @@ if needed.
 The userstorage tool creates this directory layout in the BASE_DIR
 defined in the configuration module:
 
-$ tree /var/tmp/example-storage/
-/var/tmp/example-storage/
-├── block-4k-backing
-├── block-4k-loop -> /dev/loop2
-├── block-512-backing
-├── block-512-loop -> /dev/loop3
-├── file-4k-backing
-├── file-4k-loop -> /dev/loop4
-├── file-4k-mount
-│   ├── file
-│   └── lost+found [error opening dir]
-├── file-512-backing
-├── file-512-loop -> /dev/loop5
-└── file-512-mount
-    ├── file
-    └── lost+found [error opening dir]
+    $ tree /var/tmp/example-storage/
+    /var/tmp/example-storage/
+    ├── block-4k-backing
+    ├── block-4k-loop -> /dev/loop2
+    ├── block-512-backing
+    ├── block-512-loop -> /dev/loop3
+    ├── file-4k-backing
+    ├── file-4k-loop -> /dev/loop4
+    ├── file-4k-mount
+    │   ├── file
+    │   └── lost+found [error opening dir]
+    ├── file-512-backing
+    ├── file-512-loop -> /dev/loop5
+    └── file-512-mount
+        ├── file
+        └── lost+found [error opening dir]
 
 The symbolic links (e.g. file-4k-loop) link to the loop devices created
 by the tool (/dev/loop4), and used to tear down the storage.
