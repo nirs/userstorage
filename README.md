@@ -27,6 +27,7 @@ Use pip:
 
 Use python2 if you need to run on a distribution without python3.
 
+
 ## Creating configuration file
 
 The userstorage tool creates storage based on configuration file that
@@ -48,8 +49,8 @@ The configuration module must define these names:
     # Storage configurations needed by the tests.
     BACKENDS = {}
 
-See example_config.py for example configuration used by the tests for this
-project.
+See [example_config.py](https://raw.githubusercontent.com/nirs/userstorage/master/example_config.py)
+for example configuration used by the tests for this project.
 
 
 ## Creating storage
