@@ -16,9 +16,15 @@ log = logging.getLogger("userstorage")
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Set up storage tests')
-    parser.add_argument("command", choices=["create", "delete"])
-    parser.add_argument("config_file", help="Configuration file")
+        prog="userstorage",
+        description="Create storage for tests")
+    parser.add_argument(
+        "command",
+        choices=["create", "delete"],
+        help="Command to execute")
+    parser.add_argument(
+        "config_file",
+        help="Configuration file")
     args = parser.parse_args()
 
     logging.basicConfig(
