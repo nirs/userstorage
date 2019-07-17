@@ -21,10 +21,11 @@ quickly as yourself directly from your editor.
 
 ## Installing
 
-Currently the only way to install this is cloning the repo and
-installing the package manually. We will make this available via pip
-soon.
+Use pip:
 
+    python3 -m pip install --user userstorage
+
+Use python2 if you need to run on a distribution without python3.
 
 ## Creating configuration file
 
@@ -55,14 +56,14 @@ project.
 
 To create the storage described in example_config.py, run:
 
-    python -m userstorage create example_config.py
+    userstorage create example_config.py
 
 This can be run once when creating a development environment, and must
 be run again after rebooting the host.
 
 If you want to delete the storage, run:
 
-    python -m userstorage delete example_config.py
+    userstorage delete example_config.py
 
 There is no need to delete the storage normally. The loop devices are
 backed up by sparse files and do not consume much resources.
@@ -145,7 +146,7 @@ pip.
 
 Before running the tests, create the example storage:
 
-    python -m userstorage create example_config.py
+    python3 -m userstorage create example_config.py
 
 To run the tests:
 
@@ -153,4 +154,4 @@ To run the tests:
 
 If you want to change storage layout, best delete the example storage:
 
-    python -m userstorage delete example_config.py
+    python3 -m userstorage delete example_config.py
