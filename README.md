@@ -18,6 +18,15 @@ before running the tests, and making the storage available to the
 current user. Once you created the storage, you can run the tests
 quickly as yourself directly from your editor.
 
+## Requirements
+
+On Fedora / CentOS you need to install these packages:
+
+    yum install e2fsprogs sudo util-linux
+
+The packages are typically installed on your machine, but you may need
+to add them to CI environment or container.
+
 
 ## Installing
 
