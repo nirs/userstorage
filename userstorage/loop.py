@@ -54,14 +54,14 @@ class LoopDevice(backend.Base):
             raise backend.CreateFailed(
                 "Error creating loop device: {}".format(e))
 
+        if os.geteuid() != 0:
+            osutil.chown(device)
+
         # Remove stale symlink.
         if os.path.islink(self.path):
             os.unlink(self.path)
 
         os.symlink(device, self.path)
-
-        if os.geteuid() != 0:
-            osutil.chown(self.path)
 
     def delete(self):
         log.info("Removing loop device %s", self.path)
