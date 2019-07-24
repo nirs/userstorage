@@ -13,6 +13,9 @@ from . import osutil
 
 log = logging.getLogger("userstorage")
 
+DEFAULT_UID = 0
+DEFAULT_GID = 6
+
 
 class LoopDevice(backend.Base):
     """
@@ -65,8 +68,12 @@ class LoopDevice(backend.Base):
 
     def delete(self):
         log.info("Removing loop device %s", self.path)
+
         if self.exists():
+            device = os.path.realpath(self.path)
+            osutil.chown(device, DEFAULT_UID, DEFAULT_GID)
             self._remove_loop_device()
+
         osutil.remove_file(self.path)
 
         log.info("Removing backing file %s", self._backing)
