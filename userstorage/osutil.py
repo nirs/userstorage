@@ -2,15 +2,19 @@
 # This program is free software; see LICENSE for more info.
 
 import errno
-import os
-import subprocess
+import grp
 import logging
+import os
+import pwd
+import subprocess
 
 log = logging.getLogger("userstorage")
 
 
-def chown(path):
-    user_group = "%(USER)s:%(USER)s" % os.environ
+def chown(path, uid, gid):
+    user = pwd.getpwuid(uid).pw_name
+    group = grp.getgrgid(gid).gr_name
+    user_group = "{}:{}".format(user, group)
     log.debug("Changing %s ownership to %s", path, user_group)
     subprocess.check_call(["sudo", "chown", "-R", user_group, path])
 

@@ -4,9 +4,9 @@
 from __future__ import absolute_import
 from __future__ import division
 
+import logging
 import os
 import subprocess
-import logging
 
 from . import backend
 from . import osutil
@@ -55,7 +55,7 @@ class LoopDevice(backend.Base):
                 "Error creating loop device: {}".format(e))
 
         if os.geteuid() != 0:
-            osutil.chown(device)
+            osutil.chown(device, os.geteuid(), os.getegid())
 
         # Remove stale symlink.
         if os.path.islink(self.path):

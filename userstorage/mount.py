@@ -53,7 +53,7 @@ class Mount(backend.Base):
         self._mount_loop()
 
         if os.geteuid() != 0:
-            osutil.chown(self.path)
+            osutil.chown(self.path, os.geteuid(), os.getegid())
 
     def delete(self):
         log.info("Unmounting filesystem %s", self.path)
