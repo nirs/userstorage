@@ -42,10 +42,18 @@ def test_provision(cleanup):
         assert st.st_uid == os.geteuid()
         assert st.st_gid == os.getegid()
 
+    devices = [os.path.realpath(b.path) for b in BACKENDS.values()
+               if isinstance(b, userstorage.LoopDevice)]
+
     run("delete")
 
     for b in BACKENDS.values():
         assert not b.exists()
+
+    for dev in devices:
+        st = os.stat(dev)
+        assert st.st_uid == 0
+        assert st.st_gid == 6  # disk
 
 
 @pytest.mark.sudo
