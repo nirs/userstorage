@@ -25,10 +25,15 @@ def main():
     parser.add_argument(
         "config_file",
         help="Configuration file")
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Enable debug mode")
+
     args = parser.parse_args()
 
     logging.basicConfig(
-        level=logging.INFO,
+        level=logging.DEBUG if args.debug else logging.INFO,
         format="[%(name)s] %(levelname)-7s %(message)s")
 
     cfg = config.load_config(args.config_file)
