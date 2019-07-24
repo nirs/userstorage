@@ -35,8 +35,12 @@ def user_loop(request):
 
 @pytest.fixture(
     params=[
-        BACKENDS["mount-512"],
-        BACKENDS["mount-4k"]
+        BACKENDS["mount-512-ext2"],
+        BACKENDS["mount-512-ext4"],
+        BACKENDS["mount-512-xfs"],
+        BACKENDS["mount-4k-ext2"],
+        BACKENDS["mount-4k-ext4"],
+        BACKENDS["mount-4k-xfs"],
     ],
     ids=str,
 )

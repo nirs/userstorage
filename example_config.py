@@ -38,20 +38,62 @@ BACKENDS = {
         required=False,
     ),
 
-    "mount-512": Mount(
+    "mount-512-ext2": Mount(
         LoopDevice(
             base_dir=BASE_DIR,
-            name="mount-512",
+            name="mount-512-ext2",
+            size=GiB,
+            sector_size=512,
+        ),
+        fstype="ext2",
+    ),
+
+    "mount-512-ext4": Mount(
+        LoopDevice(
+            base_dir=BASE_DIR,
+            name="mount-512-ext4",
             size=GiB,
             sector_size=512,
         ),
         fstype="ext4",
     ),
 
-    "mount-4k": Mount(
+    "mount-512-xfs": Mount(
         LoopDevice(
             base_dir=BASE_DIR,
-            name="mount-4k",
+            name="mount-512-xfs",
+            size=GiB,
+            sector_size=512,
+        ),
+        fstype="xfs",
+    ),
+
+    "mount-4k-ext2": Mount(
+        LoopDevice(
+            base_dir=BASE_DIR,
+            name="mount-4k-ext2",
+            size=GiB,
+            sector_size=4096,
+            required=False,
+        ),
+        fstype="ext2",
+    ),
+
+    "mount-4k-ext4": Mount(
+        LoopDevice(
+            base_dir=BASE_DIR,
+            name="mount-4k-ext4",
+            size=GiB,
+            sector_size=4096,
+            required=False,
+        ),
+        fstype="ext4",
+    ),
+
+    "mount-4k-xfs": Mount(
+        LoopDevice(
+            base_dir=BASE_DIR,
+            name="mount-4k-xfs",
             size=GiB,
             sector_size=4096,
             required=False,
