@@ -4,6 +4,7 @@
 from __future__ import absolute_import
 from __future__ import division
 
+import os
 import subprocess
 import sys
 
@@ -36,6 +37,10 @@ def test_provision(cleanup):
 
     for b in BACKENDS.values():
         assert b.exists()
+
+        st = os.stat(b.path)
+        assert st.st_uid == os.geteuid()
+        assert st.st_gid == os.getegid()
 
     run("delete")
 
