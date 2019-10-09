@@ -90,7 +90,8 @@ class Mount(backend.Base):
         self._wait_for_udev_events(10)
 
     def _mount_loop(self):
-        subprocess.check_call(["sudo", "mount", self._loop.path, self.path])
+        subprocess.check_call(
+            ["sudo", "mount", "-t", self.fstype, self._loop.path, self.path])
 
     def _unmount_loop(self):
         subprocess.check_call(["sudo", "umount", self.path])
