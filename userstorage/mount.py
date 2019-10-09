@@ -83,11 +83,19 @@ class Mount(backend.Base):
     # Helpers
 
     def _create_filesystem(self):
+        log.debug("Creating %s file system on %s",
+                  self.fstype, self._loop.path)
         subprocess.check_call(
             ["sudo", "mkfs", "-t", self.fstype, "-q", self._loop.path])
+        self._wait_for_udev_events(10)
 
     def _mount_loop(self):
         subprocess.check_call(["sudo", "mount", self._loop.path, self.path])
 
     def _unmount_loop(self):
         subprocess.check_call(["sudo", "umount", self.path])
+
+    def _wait_for_udev_events(self, timeout=10):
+        log.debug("Waiting up to %s seconds for udev events", timeout)
+        subprocess.check_call(
+            ["udevadm", "settle", "--timeout={}".format(timeout)])

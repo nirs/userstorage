@@ -22,7 +22,12 @@ quickly as yourself directly from your editor.
 
 On Fedora / CentOS you need to install these packages:
 
-    yum install e2fsprogs sudo util-linux xfsprogs
+    dnf install \
+        e2fsprogs \
+        sudo \
+        systemd-udev \
+        util-linux \
+        xfsprogs
 
 Some packages are typically installed on your machine, but you may need
 to add them to CI environment or container.
