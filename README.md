@@ -137,8 +137,9 @@ filesystem (/var/tmp/example-storage/file-4k-mount/file).
 
 ## Projects using userstorage
 
-- sanlock - using very early version of this tool
-- vdsm - using more recent version of this tool
+- [ovirt-imageio](https://github.com/oVirt/ovirt-imageio)
+- [vdsm](https://github.com/oVirt/vdsm) - embers a more recent version
+- [sanlock](https://pagure.io/sanlock) - embeds a very early version
 
 (Please add your project here)
 
