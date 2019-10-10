@@ -7,7 +7,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="userstorage",
-    version="0.3",
+    version="0.4",
     author="Nir Soffer",
     author_email="nirsof@gmail.com",
     description="Create storage for tests",
