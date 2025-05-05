@@ -9,9 +9,9 @@ prefix := userstorage-test
 all: $(targets)
 
 $(targets):
-	podman build -t $(prefix)-$@ -f $@.containerfile .
+	podman build -t $(prefix):$@ -f $@.containerfile .
 
 push:
 	for name in $(targets); do \
-		podman push $(prefix)-$$name quay.io/ovirt/$(prefix)-$$name; \
+		podman push $(prefix):$$name quay.io/ovirt/$(prefix):$$name; \
 	done

@@ -10,7 +10,7 @@ env:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    container: quay.io/ovirt/userstorage-test-centos-9
+    container: quay.io/ovirt/userstorage-test:centos-9
     steps:
     - uses: actions/checkout@v4
     - name: Run linters
@@ -22,7 +22,7 @@ jobs:
         distro: [ centos-9 ]
       fail-fast: false
     container:
-      image: quay.io/alesgar/userstorage-test-centos-9
+      image: quay.io/ovirt/userstorage-test:centos-9
       # Required to create loop devices.
       options: --privileged
     steps:
